@@ -1,6 +1,6 @@
 # GUI Battery Bank
 
-_Repositorio de documentación acerca del desarrollo de la GUI battery bank para el laboratorio de instrumentaci+on espacial LINX ICN_
+_Repositorio de documentación acerca del desarrollo de la GUI battery bank para el laboratorio de instrumentación espacial LINX ICN_
 
 
 ## Start🚀
@@ -9,6 +9,11 @@ _Estas instrucciones te permitirán obtener una copia del proyecto en funcionami
 
 Mira **Deployment** para conocer como desplegar el proyecto.
 
+## Menu de proyectos 
+Aquí están las diferentes plataformas IoT que se han utilizado para gráficar el voltaje de las baterías en el laboratorio.
+
+[1. Nivel de batería con Arduino Cloud.](https://cloud.arduino.cc)  
+[2. Nivel de batería con Grafana.](https://cloud.arduino.cc)  
 
 ### Pre-requisitos 📋
 
@@ -104,4 +109,4 @@ Este proyecto está bajo la Licencia (Tu Licencia) - mira el archivo [LICENSE.md
 
 
 ---
-⌨️ con ❤️ por [Villanuevand](https://github.com/Villanuevand) 😊
+⌨️ con ❤️ por [Addi Trejo](https://github.com/Additrejo)
