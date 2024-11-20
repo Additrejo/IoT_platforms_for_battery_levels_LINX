@@ -11,7 +11,9 @@ Adafruit_SSD1306 display(SCREEN_WIDTH, SCREEN_HEIGHT, &Wire, OLED_RESET);
 Adafruit_INA219 ina219;
 
 unsigned long previousMillis = 0;
-unsigned long interval = 100;
+unsigned long interval = 30000;  // Intervalo de 30 segundos
+unsigned long startMillis = 0;  // Tiempo inicial de simulación
+
 float shuntvoltage = 0;
 float busvoltage = 0;
 float current_mA = 0;
@@ -19,30 +21,39 @@ float current_A = 0;
 float loadvoltage = 0;
 float power_mW = 0;
 float energy = 0;
-float correctionFactor = 3.05;  // Ajuste para obtener el valor real de voltaje
-
-
+float correctionFactor = 1.0;  // Inicialmente 1.0 para calibración
 
 void setup() {
   Serial.begin(115200);
-  Wire.begin(21, 22); // Configura SDA y SCL para ESP32
+  Wire.begin(21, 22);  // Configura SDA y SCL para ESP32
   display.begin(SSD1306_SWITCHCAPVCC, SCREEN_ADDRESS);
   display.clearDisplay();
-  
+
   if (!ina219.begin()) {
     Serial.println("Failed to find INA219 chip");
     while (1) { delay(5000); }
   }
 
-  Serial.println("Measuring voltage and current with INA219 ...");
+  startMillis = millis();
+
+  Serial.println("Calibración: Ingresa el factor de corrección por el monitor serial.");
+  Serial.println("Voltaje en el Serial Plotter:");
 }
 
 void loop() {
+  if (Serial.available()) {
+    String input = Serial.readStringUntil('\n');
+    correctionFactor = input.toFloat();
+    Serial.print("Nuevo factor de corrección: ");
+    Serial.println(correctionFactor);
+  }
+
   unsigned long currentMillis = millis();
   if (currentMillis - previousMillis >= interval) {
     previousMillis = currentMillis;
     ina219values();
-    displaydata();
+    displaydata(currentMillis - startMillis);  // Pasar tiempo transcurrido
+    plotBusVoltage();  // Graficar el Bus Voltage
   }
 }
 
@@ -64,25 +75,34 @@ void ina219values() {
   Serial.println("");
 }
 
-void displaydata() {
+void displaydata(unsigned long elapsedMillis) {
+  unsigned long seconds = elapsedMillis / 1000;
+  unsigned long minutes = seconds / 60;
+  unsigned long hours = minutes / 60;
+
+  seconds %= 60;
+  minutes %= 60;
+
   display.clearDisplay();
   display.setTextColor(SSD1306_WHITE);
   display.setTextSize(1);
+
   display.setCursor(0, 0);
-  display.print(loadvoltage);  // Voltaje corregido
-  display.setCursor(31, 0);
-  display.print("V");
-  display.setCursor(75, 0);
-  display.print(current_A);  // Corriente en A
-  display.setCursor(110, 0);
-  display.print("A");
-  display.setCursor(0, 13);
-  display.print(loadvoltage * current_A * 1000);  // Potencia en mW
-  display.setCursor(57, 13);
-  display.print("mW");
-  display.setCursor(0, 23);
-  display.print(energy);
-  display.setCursor(57, 23);
-  display.print("mWh");
+  display.printf("Time: %02lu:%02lu:%02lu", hours, minutes, seconds);
+
+  display.setCursor(0, 8);
+  display.printf("V: %.2fV  A: %.3fA", loadvoltage, current_A);
+
+  display.setCursor(0, 16);
+  display.printf("P: %.2fmW", loadvoltage * current_A * 1000);
+
+  display.setCursor(0, 24);
+  display.printf("E: %.2fmWh", energy);
+
   display.display();
+}
+
+void plotBusVoltage() {
+  // Imprimir solo el Bus Voltage para el Serial Plotter
+  Serial.println(busvoltage);
 }
