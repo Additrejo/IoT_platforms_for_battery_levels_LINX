@@ -4,7 +4,7 @@
 
 - **Addi Trejo** - _Trabajo inicial_ - [Addi Trejo](https://github.com/additrejo)
   
-#### Last update: Ene 08 2025  
+#### Last update: Ene 13 2025  
 ----  
 
 ## Descripción
@@ -43,6 +43,7 @@ Ideas, mejoras planificadas y actualizaciones futuras para el proyecto actual.
 07 Ene 2025: Conexión, configuración y obtención en el valor del voltaje real.  
 08 Ene 2025: Icono de batería en tiempo real.  
 09 Ene 2025: Conexión a Thingspeak en tiempo real. - [MAX17043 Voltaje y porcentaje en Thingspeak ](https://github.com/Additrejo/IoT_platforms_for_battery_levels_by_LINX/blob/main/ESP32%20-%20Max17043/ESP32-MAX17043-OLED-TS/ESP32-MAX17043-OLED-TS.ino)  
+13 Ene 2025: Exportar datos de Thingspeak a MATLAB.
 
 ----
 
@@ -450,6 +451,41 @@ Si todo está configurado correctamente, la ESP32 se conectará vía WIFI.
 Aparecerá que los datos se han enviado correctamente a Thingspeak.
 
 [![Thingspeak5.jpg](https://i.postimg.cc/tCxLH1qr/Thingspeak5.jpg)](https://postimg.cc/dLJW2VTd)  
+
+### Visualización de datos con Matlab Analysis.  
+Para visualizar los datos obtenidos en Thingspeak en Matlab es necesario tener instalado el paquete **ThingSpeak Support Toolbox.**
+En un nuevo script agregar el siguiente código:  
+
+```bash
+
+% Configura los detalles del canal
+channelID = 12345;                                        % Identificador único del canal en ThingSpeak donde se almacenan los datos.
+readAPIKey = 'YOUR_READ_API_KEY';                            % Clave de lectura del canal (solo necesaria si el canal es privado).
+
+% Leer el historial completo de datos del canal
+[data, timestamps] = thingSpeakRead(channelID, ...          % Función para leer datos de ThingSpeak.
+    'Fields', 1, ...                                        % Especifica el campo que se desea leer (en este caso, el campo 1).
+    'DateRange', [datetime(2023,1,1), datetime('now')], ... % Define el rango de fechas desde el 1 de enero de 2023 hasta el momento actual.
+    'ReadKey', readAPIKey);                                 % Incluye la clave de lectura necesaria para canales privados.
+
+% Mostrar los datos en la consola
+disp(table(timestamps, data)); % Convierte los datos y marcas de tiempo en una tabla y la muestra en la consola.
+
+                                                       % Graficar los datos históricos
+figure;                                                % Crea una nueva ventana para la figura.
+plot(timestamps, data, '-o');                          % Grafica los datos frente a sus marcas de tiempo con líneas y marcadores circulares.
+title('Historial Completo de Datos de ThingSpeak');    % Título del gráfico.
+xlabel('Tiempo');                                      % Etiqueta del eje X.
+ylabel('Valor');                                       % Etiqueta del eje Y.
+grid on;                                               % Activa la cuadrícula en el gráfico para mejorar la visualización.
+
+```
+
+Ejecutamos el código y veremos gráficados nuestros datos de thingspeak.  
+[![Matlab-graph-Volta.jpg](https://i.postimg.cc/k57R3136/Matlab-graph-Volta.jpg)](https://postimg.cc/mP6g7SrB)  
+
+Si comparamos la grafica obtenida como las de la página, son exactamente las mismas.  
+[![Matlab-graph-Volta-TS.jpg](https://i.postimg.cc/QMXQjxGq/Matlab-graph-Volta-TS.jpg)](https://postimg.cc/Js2Dq8hy)
 
 ----
 ⌨️ con ❤️ por [Addi Trejo](https://github.com/additrejo)
