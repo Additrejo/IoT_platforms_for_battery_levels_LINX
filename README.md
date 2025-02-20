@@ -1,11 +1,11 @@
-# GUI Battery Bank
+# Desarrollo y uso de plataformas IoT para el análisis de baterías Li-Ion.
 
-_Repositorio de documentación acerca del desarrollo de la GUI battery bank para el laboratorio de instrumentación espacial LINX ICN_
+_Repositorio de documentación acerca del desarrollo de plataformas para la medición de baterías Li-Ion en el laboratorio de instrumentación espacial LINX ICN._
 
 
 ## Start🚀
 
-_Estas instrucciones te permitirán obtener una copia del proyecto en funcionamiento en tu máquina local para propósitos de desarrollo y pruebas._
+_Estas instrucciones te permitirán obtener las instrucciones necesarias para propósitos de desarrollo y pruebas en el estudio de baterías Li-Ion._
 
 Mira **Deployment** para conocer como desplegar el proyecto.
 
@@ -17,9 +17,12 @@ Aquí están las diferentes plataformas IoT que se han utilizado para gráficar 
 
 ### Pre-requisitos 📋
 
-_Cosas necesitas para instalar el software y como instalarlas_
+_Software necesario_
 ```  
 Arduino IDE
+Visual Studio Code
+#Bibliotecas que será indicadas en cada subproyecto
+
 ```
 * [Arduino Cloud](http://www.dropwizard.io/1.0.2/docs/) - El framework web usado
 
@@ -87,10 +90,7 @@ Usamos [SemVer](http://semver.org/) para el versionado. Para todas las versiones
 
 ## Autores ✒️
 
-_Menciona a todos aquellos que ayudaron a levantar el proyecto desde sus inicios_
-
-* **Andrés Villanueva** - *Trabajo Inicial* - [villanuevand](https://github.com/villanuevand)
-* **Fulanito Detal** - *Documentación* - [fulanitodetal](#fulanito-de-tal)
+* **Addi Trejo** - *Desarrollador de proyecto* - [additrejo](https://github.com/additrejo)
 
 También puedes mirar la lista de todos los [contribuyentes](https://github.com/your/project/contributors) quíenes han participado en este proyecto. 
 
@@ -100,13 +100,8 @@ Este proyecto está bajo la Licencia (Tu Licencia) - mira el archivo [LICENSE.md
 
 ## Expresiones de Gratitud 🎁
 
-* Comenta a otros sobre este proyecto 📢
-* Invita una cerveza 🍺 o un café ☕ a alguien del equipo. 
-* Da las gracias públicamente 🤓.
+* Invita una cerveza 🍺 o un café ☕ a Addi.
 * Dona con cripto a esta dirección: `0xf253fc233333078436d111175e5a76a649890000`
 * etc.
-
-
-
 ---
 ⌨️ con ❤️ por [Addi Trejo](https://github.com/Additrejo)
