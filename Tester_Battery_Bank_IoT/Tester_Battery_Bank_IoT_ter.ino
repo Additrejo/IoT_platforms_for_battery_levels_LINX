@@ -14,8 +14,8 @@
 Adafruit_SSD1306 display(SCREEN_WIDTH, SCREEN_HEIGHT, &Wire, OLED_RESET);
 
 // 📡 Configuración WiFi y ThingSpeak
-const char* ssid = "SterenC";
-const char* password = "unodostrescuatro";
+const char* ssid = "ICN"; 
+const char* password = "99999999999999999999999999"; 
 const char* server = "http://api.thingspeak.com";
 const char* apiKey = "SC8TJFLKBEKIPCX7";
 
@@ -35,7 +35,9 @@ const int releDescarga = 26;
 bool enCarga = false;
 unsigned long tiempoUltimaConexion = 0;
 unsigned long tiempoUltimaLectura = 0;
-const unsigned long intervaloWiFi = 600000; // 10 minutos
+unsigned long tiempoUltimoEnvio = 0;
+const unsigned long intervaloWiFi = 600000;  // 10 minutos
+const unsigned long intervaloEnvio = 15000;  // 15 segundos
 
 void setup() {
     Serial.begin(115200);
@@ -82,7 +84,7 @@ void loop() {
 
     // 🔄 Control de carga/descarga
     if (enCarga) {
-        if (voltage >= 4.2) {
+        if (voltage >= 4.0) {
             digitalWrite(releCarga, LOW);
             digitalWrite(releDescarga, HIGH);
             enCarga = false;
@@ -105,13 +107,18 @@ void loop() {
         }
     }
 
-    // 📟 Mostrar datos
-    Serial.printf("Voltaje: %.2f V | Batería: %.1f%% | Temp: %.2f°C | Estado: %s\n", voltage, percentage, temperatura, estadoBateria.c_str());
-
+    // 📟 Mostrar datos en Serial Monitor
+    Serial.printf("Voltaje: %.2f V | Batería: %.1f%% | Temp: %.2f°C | Estado: %s\n", 
+                  voltage, percentage, temperatura, estadoBateria.c_str());
     displayData(voltage, percentage, temperatura, estadoBateria);
-    sendToThingSpeak(voltage, percentage, temperatura);
 
-    delay(1000);
+    // ⏳ Enviar datos a ThingSpeak cada 15 segundos
+    if (millis() - tiempoUltimoEnvio >= intervaloEnvio) {
+        sendToThingSpeak(voltage, percentage, temperatura);
+        tiempoUltimoEnvio = millis();
+    }
+
+    delay(1000);  // Pequeña pausa para evitar sobrecarga en el loop
 }
 
 void conectarWiFi() {
@@ -179,4 +186,3 @@ void sendToThingSpeak(float voltage, float percentage, float temperatura) {
         conectarWiFi();
     }
 }
-
