@@ -9,11 +9,11 @@ _Estas instrucciones te permitirán obtener las instrucciones necesarias para pr
 
 Mira **Deployment** para conocer como desplegar el proyecto.
 
-## Menu de proyectos 
-Aquí están las diferentes plataformas IoT que se han utilizado para gráficar el voltaje de las baterías en el laboratorio.
+## Menu de Carpetas
+Aquí se encuentra el menu de carpetas que contienen los debugs, pruebas de sensores, así como plataformas.
 
-[1. Nivel de batería con Arduino Cloud.](https://cloud.arduino.cc)  
-[2. Nivel de batería con Grafana.](https://cloud.arduino.cc)  
+[1. Códigos ESP32/ESP32_INA219.](https://github.com/LINX-ICN-UNAM/IoT_platforms_for_battery_levels_by_LINX/tree/main/C%C3%B3digos%20ESP32/ESP32_INA219)  
+[2. ESP32 - Max17043.](https://github.com/LINX-ICN-UNAM/IoT_platforms_for_battery_levels_by_LINX/tree/main/ESP32%20-%20Max17043)  
 
 ### Pre-requisitos 📋
 
