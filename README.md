@@ -1,7 +1,7 @@
 # Desarrollo y uso de plataformas IoT para el análisis de baterías Li-Ion.
+_Repositorio de documentación acerca del desarrollo de plataformas para la medición de baterías Li-Ion en el laboratorio de instrumentación espacial LINX ICN UNAM._
 
-_Repositorio de documentación acerca del desarrollo de plataformas para la medición de baterías Li-Ion en el laboratorio de instrumentación espacial LINX ICN._
-
+[![thigspeak-dashboard.jpg](https://i.postimg.cc/3NwT5HV1/thigspeak-dashboard.jpg)](https://postimg.cc/dkgXrgqZ)
 
 ## Start🚀
 
@@ -9,11 +9,29 @@ _Estas instrucciones te permitirán obtener las instrucciones necesarias para pr
 
 Mira **Deployment** para conocer como desplegar el proyecto.
 
+## Pre-requisitos 📋
+### Hardware necesario.  
+* PC
+* ESP32
+* Componentes de electrónica según pruebas.
+
+### Software necesario.
+* [Arduino IDE](https://www.arduino.cc/en/software) - Programación de microcontrolador.
+* [Matlab](https://la.mathworks.com/products/matlab.html) - Analisis de datos.
+
+### Plataformas.
+*  [Thingspeak](https://thingspeak.mathworks.com/) - Plataforma de visualización de datos IoT.
+
+
 ## Menu de Carpetas
 Aquí se encuentra el menu de carpetas que contienen los debugs, pruebas de sensores, así como plataformas.
 
 [1. Códigos ESP32/ESP32_INA219.](https://github.com/LINX-ICN-UNAM/IoT_platforms_for_battery_levels_by_LINX/tree/main/C%C3%B3digos%20ESP32/ESP32_INA219)  
+Esta carpeta contiene las pruebas, así como el funcionamiento del sensor INA219 que mide la corriente y el voltaje de una batería 18650.
 [2. ESP32 - Max17043.](https://github.com/LINX-ICN-UNAM/IoT_platforms_for_battery_levels_by_LINX/tree/main/ESP32%20-%20Max17043)  
+Esta carpeta contiene las pruebas, así como el funcionamiento del sensor Max17043 que mide el voltaje, así como del SOC de una batería 18650.  
+[2. ESP32 - Relevadores.](https://github.com/LINX-ICN-UNAM/IoT_platforms_for_battery_levels_by_LINX/tree/main/ESP32-Relevadores)   
+Contiene las pruebas de relevadores para conmutar Carga y descarga.
 
 ### Pre-requisitos 📋
 
@@ -24,7 +42,7 @@ Visual Studio Code
 #Bibliotecas que será indicadas en cada subproyecto
 
 ```
-* [Arduino Cloud](http://www.dropwizard.io/1.0.2/docs/) - El framework web usado
+
 
 ### Instalación 🔧
 
@@ -98,10 +116,5 @@ También puedes mirar la lista de todos los [contribuyentes](https://github.com/
 
 Este proyecto está bajo la Licencia (Tu Licencia) - mira el archivo [LICENSE.md](LICENSE.md) para detalles
 
-## Expresiones de Gratitud 🎁
-
-* Invita una cerveza 🍺 o un café ☕ a Addi.
-* Dona con cripto a esta dirección: `0xf253fc233333078436d111175e5a76a649890000`
-* etc.
 ---
-⌨️ con ❤️ por [Addi Trejo](https://github.com/Additrejo)
+Hecho con ❤️ por [Addi Trejo](https://github.com/Additrejo)
