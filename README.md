@@ -22,46 +22,53 @@ Mira **Deployment** para conocer como desplegar el proyecto.
 ### Plataformas.
 *  [Thingspeak](https://thingspeak.mathworks.com/) - Plataforma de visualización de datos IoT.
 
+  _*Para el caso de Thingspeak y matlab se necesita solo una cuenta para poder ser usadas_
+
 
 ## Menu de Carpetas
 Aquí se encuentra el menu de carpetas que contienen los debugs, pruebas de sensores, así como plataformas.
 
-[1. Códigos ESP32/ESP32_INA219.](https://github.com/LINX-ICN-UNAM/IoT_platforms_for_battery_levels_by_LINX/tree/main/C%C3%B3digos%20ESP32/ESP32_INA219)  
-Esta carpeta contiene las pruebas, así como el funcionamiento del sensor INA219 que mide la corriente y el voltaje de una batería 18650.
-[2. ESP32 - Max17043.](https://github.com/LINX-ICN-UNAM/IoT_platforms_for_battery_levels_by_LINX/tree/main/ESP32%20-%20Max17043)  
-Esta carpeta contiene las pruebas, así como el funcionamiento del sensor Max17043 que mide el voltaje, así como del SOC de una batería 18650.  
-[2. ESP32 - Relevadores.](https://github.com/LINX-ICN-UNAM/IoT_platforms_for_battery_levels_by_LINX/tree/main/ESP32-Relevadores)   
-Contiene las pruebas de relevadores para conmutar Carga y descarga.
+*   [Códigos ESP32/ESP32_INA219.](https://github.com/LINX-ICN-UNAM/IoT_platforms_for_battery_levels_by_LINX/tree/main/C%C3%B3digos%20ESP32/ESP32_INA219)  
+    Esta carpeta contiene las pruebas, así como el funcionamiento del sensor INA219 que mide la corriente y el voltaje de una batería 18650.
+*   [ESP32 - Max17043.](https://github.com/LINX-ICN-UNAM/IoT_platforms_for_battery_levels_by_LINX/tree/main/ESP32%20-%20Max17043)  
+    Esta carpeta contiene las pruebas, así como el funcionamiento del sensor Max17043 que mide el voltaje, así como del SOC de una batería 18650.  
+*   [ESP32 - Relevadores.](https://github.com/LINX-ICN-UNAM/IoT_platforms_for_battery_levels_by_LINX/tree/main/ESP32-Relevadores)  
+    Contiene las pruebas de relevadores para conmutar Carga y descarga.  
+*   [Tester battery bank/Tester_battery_bank](https://github.com/LINX-ICN-UNAM/IoT_platforms_for_battery_levels_by_LINX/tree/main/Tester%20battery%20bank/Tester_battery_bank)  
+    Contiene las pruebas de Thingspeak para obtener lecturas en la página web.  
+*   [IoT_platforms_for_battery_levels_by_LINX](https://github.com/LINX-ICN-UNAM/IoT_platforms_for_battery_levels_by_LINX/tree/main/Tester_Battery_Bank_IoT)  
+    Se trata de una segunda versión de la plataforma Thingspeak, agregando un contador de ciclos.
+*   [Thingspeak](https://github.com/LINX-ICN-UNAM/IoT_platforms_for_battery_levels_by_LINX/tree/main/Thinkspeak)  
+    Contiene las primeras pruebas de conexión a thingspeak. Esta carpeta está descontinuada.
 
+<!--
 ### Pre-requisitos 📋
 
 _Software necesario_
 ```  
 Arduino IDE
 Visual Studio Code
-#Bibliotecas que será indicadas en cada subproyecto
+Bibliotecas que será indicadas en cada subproyecto
+Matlab
 
 ```
+--->
 
+### Ejecutar pruebas 🔧
 
-### Instalación 🔧
-
-_Una serie de ejemplos paso a paso que te dice lo que debes ejecutar para tener un entorno de desarrollo ejecutandose_
-
-_Dí cómo será ese paso_
+_Es necesario conectar el circuito de forma correcta en cada uno de las pruebas antes de subir cualquier código._  
 
 ```
-Da un ejemplo
+Ejecutar el código en Arduino IDE.
 ```
 
-_Y repite_
+_En caso de graficar datos en matlab, asegurarse de que el programa esté ejecutando de forma correcta en Arduino IDE._
 
 ```
-hasta finalizar
+Agregar las credenciales correctas como el ID Channel, Read y Write API Key. que se encuentran en los settings de Thingspeak.
 ```
 
-_Finaliza con un ejemplo de cómo obtener datos del sistema o como usarlos para una pequeña demo_
-
+<!-- 
 ## Ejecutando las pruebas ⚙️
 
 _Explica como ejecutar las pruebas automatizadas para este sistema_
@@ -106,15 +113,17 @@ Puedes encontrar mucho más de cómo utilizar este proyecto en nuestra [Wiki](ht
 
 Usamos [SemVer](http://semver.org/) para el versionado. Para todas las versiones disponibles, mira los [tags en este repositorio](https://github.com/tu/proyecto/tags).
 
+## Licencia 📄
+
+Este proyecto está bajo la Licencia (Tu Licencia) - mira el archivo [LICENSE.md](LICENSE.md) para detalles
+--->
 ## Autores ✒️
 
 * **Addi Trejo** - *Desarrollador de proyecto* - [additrejo](https://github.com/additrejo)
 
-También puedes mirar la lista de todos los [contribuyentes](https://github.com/your/project/contributors) quíenes han participado en este proyecto. 
+<!--- También puedes mirar la lista de todos los [contribuyentes](https://github.com/your/project/contributors) quíenes han participado en este proyecto. --->
 
-## Licencia 📄
 
-Este proyecto está bajo la Licencia (Tu Licencia) - mira el archivo [LICENSE.md](LICENSE.md) para detalles
 
 ---
 Hecho con ❤️ por [Addi Trejo](https://github.com/Additrejo)
