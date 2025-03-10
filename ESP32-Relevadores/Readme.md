@@ -4,7 +4,8 @@
 
 - **Addi Trejo** - _Trabajo inicial_ - [Addi Trejo](https://github.com/additrejo)
   
-#### Last update: Ene 22 2025  
+#### Last update: 
+22 Ene 2025: Conexión, configuración para encender 2 leds.  
 ----  
 
 ## Descripción
@@ -27,15 +28,8 @@ Hardware
 librerias:
 
 ```bash
-
+No utiliza una librería en especifico para su funcionameinto 
 ```
-----
-
-----  
-
-## Actualizaciones  
-22 Ene 2025: Conexión, configuración para encender 2 leds.  
-
 ----
 
 ## proyecto 🚀
