@@ -52,6 +52,7 @@ Ideas, mejoras planificadas y actualizaciones futuras para el proyecto actual.
 ### Conexión, configuración y obtención en el valor del voltaje real.  .
 Se construyó el siguiente circuito:  
 [![Esquematico-version-1-0.jpg](https://i.postimg.cc/0jD3Lq89/Esquematico-version-1-0.jpg)](https://postimg.cc/9wXJ7KRk)  
+_Tanto el sensor  MAX17043 y la pantalla oled utilizan el protocolo de comunicación I2C. Por lo que compartiran los mismos pines_
 **MAX17043:**  
 GND → GND (ESP32)  
 VCC → 3.3V (ESP32)  
