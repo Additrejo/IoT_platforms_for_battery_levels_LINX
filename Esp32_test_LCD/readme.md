@@ -9,5 +9,11 @@ GND - GND
 SCL - D22  
 SDA - D21  
 
-Cargar el siguiente código:  
+Instalar la siguiente librería en el IDE de Arduino:
+
+```
+LiquidCrystal_PCF8574
+```
+
+Cargar el siguiente código en el IDE de Arduino:  
 [ESP32_test_LCD](https://github.com/LINX-ICN-UNAM/IoT_platforms_for_battery_levels_by_LINX/blob/main/Esp32_test_LCD/Esp32_test_LCD.ino)  
