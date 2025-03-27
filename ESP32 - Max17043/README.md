@@ -33,9 +33,14 @@ librerias
 Max1704x
 ```
 ----
-## Roadmap
+## Documentación.
+Sensor Voltaje.  
+[MAX17043 Módulo ](https://www.sparkfun.com/sparkfun-lipo-fuel-gauge.html)  - Documentación sobre el módulo.  
+[MAX17043 CI ](https://www.analog.com/media/en/technical-documentation/data-sheets/max17043-max17044.pdf)  - MAX17043 Datasheet.  
 
-Ideas, mejoras planificadas y actualizaciones futuras para el proyecto actual.  
+Microcontrolador.  
+[ESP32 ](https://www.espressif.com/sites/default/files/documentation/esp32_datasheet_en.pdf)  - ESP32 Datasheet 
+
 
 ----  
 
