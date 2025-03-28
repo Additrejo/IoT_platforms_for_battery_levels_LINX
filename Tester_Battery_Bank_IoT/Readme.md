@@ -29,7 +29,7 @@ Es necesario crear una cuenta en - https://thingspeak.mathworks.com/_
 
 A continuación se muestran los pasos para crear un nuevo canal.
 
-###  * Crear un nuevo canal en thingspeak.  
+###  * Despliegue - Crear un nuevo canal en thingspeak.  📦
 [![Thingspeak1.jpg](https://i.postimg.cc/wjx3rdHj/Thingspeak1.jpg)](https://postimg.cc/w7P6tZ7C)
 
 - Agregar un nombre al canal
@@ -66,18 +66,6 @@ Pegamos el código y damos en Save and Run.
 
 [![mtlab-visual-3.jpg](https://i.postimg.cc/fLCW4Tc4/mtlab-visual-3.jpg)](https://postimg.cc/PpLnYHVK)
 
-<!--
-### Pre-requisitos 📋
-
-_Software necesario_
-```  
-Arduino IDE
-Visual Studio Code
-Bibliotecas que será indicadas en cada subproyecto
-Matlab
-
-```
---->
 
 ### Ejecutar pruebas 🔧
 
@@ -93,62 +81,50 @@ _En caso de graficar datos en matlab, asegurarse de que el programa esté ejecut
 Agregar las credenciales correctas como el ID Channel, Read y Write API Key. que se encuentran en los settings de Thingspeak.
 ```
 
-<!-- 
-## Ejecutando las pruebas ⚙️
 
-_Explica como ejecutar las pruebas automatizadas para este sistema_
+# Versiones  ⚙️
 
-### Analice las pruebas end-to-end 🔩
+## **_Versión 1.4_**
+* [Versión 1.4](https://github.com/LINX-ICN-UNAM/IoT_platforms_for_battery_levels_by_LINX/blob/main/Tester_Battery_Bank_IoT/Tester_Battery_Bank_IoT_V1.4.ino)
 
-_Explica que verifican estas pruebas y por qué_
+![image](https://github.com/user-attachments/assets/2caca5f5-c604-44eb-8fd5-2efa8101ad4a)  
 
-```
-Da un ejemplo
-```
+Esta versión es capaz de obtener la corriente de descarga (entre la resistencia y la batería 18650).  
 
-### Y las pruebas de estilo de codificación ⌨️
+### Gráfica en Matlab
+Para ver la gráfica en MATLAB de este circuito consulte la carpeta **[Matlab codes](https://github.com/LINX-ICN-UNAM/IoT_platforms_for_battery_levels_by_LINX/tree/main/Matlab%20Codes)** --> [INA219](https://github.com/LINX-ICN-UNAM/IoT_platforms_for_battery_levels_by_LINX/blob/main/Matlab%20Codes/CorrienteINA219.m)  
 
-_Explica que verifican estas pruebas y por qué_
+![image](https://github.com/user-attachments/assets/08c86828-4559-44b0-96b9-866fff83cc64)  
 
-```
-Da un ejemplo
-```
 
-## Despliegue 📦
+## **_Versión 1.5_**
+* [Versión 1.5](https://github.com/LINX-ICN-UNAM/IoT_platforms_for_battery_levels_by_LINX/blob/main/Tester_Battery_Bank_IoT/Tester_Battery_Bank_IoT_V1.5.ino)
 
-_Agrega notas adicionales sobre como hacer deploy_
+![image](https://github.com/user-attachments/assets/5fa98963-a349-4f9b-b87f-95d35bf98dbe)
 
-## Construido con 🛠️
 
-_Menciona las herramientas que utilizaste para crear tu proyecto_
+Al agregar un segundo sensor de corriente, ahora podemos obtener la corriente de descarga (entre la resistencia y la batería 18650) y la corriente de carga (entre el BMS y la batería) 
 
-* [Dropwizard](http://www.dropwizard.io/1.0.2/docs/) - El framework web usado
-* [Maven](https://maven.apache.org/) - Manejador de dependencias
-* [ROME](https://rometools.github.io/rome/) - Usado para generar RSS
+### Gráfica en Matlab
+Para ver la gráfica en MATLAB de este circuito consulte la carpeta **[Matlab codes](https://github.com/LINX-ICN-UNAM/IoT_platforms_for_battery_levels_by_LINX/tree/main/Matlab%20Codes)** 
 
-## Contribuyendo 🖇️
+x..
 
-Por favor lee el [CONTRIBUTING.md](https://gist.github.com/villanuevand/xxxxxx) para detalles de nuestro código de conducta, y el proceso para enviarnos pull requests.
+**
+
 
 ## Wiki 📖
 
 Puedes encontrar mucho más de cómo utilizar este proyecto en nuestra [Wiki](https://github.com/tu/proyecto/wiki)
 
-## Versionado 📌
 
-Usamos [SemVer](http://semver.org/) para el versionado. Para todas las versiones disponibles, mira los [tags en este repositorio](https://github.com/tu/proyecto/tags).
 
 ## Licencia 📄
 
-Este proyecto está bajo la Licencia (Tu Licencia) - mira el archivo [LICENSE.md](LICENSE.md) para detalles
+Este proyecto está bajo la Licencia (LINXlicence) - mira el archivo [LICENSE.md](LICENSE.md) para detalles
 --->
 ## Autores ✒️
 
 * **Addi Trejo** - *Desarrollador de proyecto* - [additrejo](https://github.com/additrejo)
 
-<!--- También puedes mirar la lista de todos los [contribuyentes](https://github.com/your/project/contributors) quíenes han participado en este proyecto. --->
-
-
-
 ---
-Hecho con ❤️ por [Addi Trejo](https://github.com/Additrejo)
