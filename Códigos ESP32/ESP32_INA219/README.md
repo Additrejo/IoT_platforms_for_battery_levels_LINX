@@ -170,3 +170,18 @@ void plotBusVoltage() {
 ```
 Ejecutando el circuito obtendremos el valor del voltaje y la corriente que consume el LED.  
 [![INA219-Conexi-n.jpg](https://i.postimg.cc/7ZH4s869/INA219-Conexi-n.jpg)](https://postimg.cc/4mSjy0pH)
+
+
+## Dirección I2C   
+Si se utiliza más de un sensor INA219, a cada placa se le debe asignar una dirección única. Esto se realiza mediante los puentes de dirección en el borde derecho de la placa. La dirección base I2C de cada placa es 0x40. La dirección binaria que se programa con los puentes de dirección se suma a la dirección base I2C.
+
+Para programar el desplazamiento de la dirección, utilice una gota de soldadura para puentear el puente de dirección correspondiente a cada "1" binario de la dirección.  
+
+![image](https://github.com/user-attachments/assets/664d99bb-81d7-456b-93ed-3d5f8b868990)  
+_Imagen: Adafruit_
+
+Se pueden conectar hasta 4 placas. El direccionamiento es el siguiente:  
+Placa 0 : Dirección = 0x40 Desplazamiento = binario 00000 (no se requieren puentes)  
+Placa 1 : Dirección = 0x41 Desplazamiento = binario 00001 (puente A0 como en la imagen superior)  
+Placa 2 : Dirección = 0x44 Desplazamiento = binario 00100 (puente A1)  
+Placa 3 : Dirección = 0x45 Desplazamiento = binario 00101 (puentes A0 y A1)  
