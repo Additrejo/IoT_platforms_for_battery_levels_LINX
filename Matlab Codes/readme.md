@@ -9,13 +9,6 @@ No es necesario instalar alguna dependencia en particular pero si es importante 
 ## Índice
 
 1. [CorrienteINA219](https://github.com/LINX-ICN-UNAM/IoT_platforms_for_battery_levels_by_LINX/blob/main/Matlab%20Codes/CorrienteINA219.m)
-2. [Instalación](#instalación)
-3. [Uso](#uso)
-4. [Características](#características)
-5. [Contribución](#contribución)
-6. [Roadmap](#roadmap)
-7. [Licencia](#licencia)
-8. [Contacto](#contacto)
 
 ---
 
