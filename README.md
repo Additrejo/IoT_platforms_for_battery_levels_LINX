@@ -1,13 +1,12 @@
 # Desarrollo y uso de plataformas IoT para el análisis de baterías Li-Ion.
-_Repositorio de documentación acerca del desarrollo de plataformas para la medición de baterías Li-Ion en el laboratorio de instrumentación espacial LINX ICN UNAM._
 
 [![thigspeak-dashboard.jpg](https://i.postimg.cc/3NwT5HV1/thigspeak-dashboard.jpg)](https://postimg.cc/dkgXrgqZ)
 
-## Start🚀
+## Descripción
+_Repositorio de documentación acerca del desarrollo de plataformas IoT para mediciones de baterías Li-Ion en el laboratorio de instrumentación espacial LINX ICN UNAM._  
 
-_Estas instrucciones te permitirán obtener las instrucciones necesarias para propósitos de desarrollo y pruebas en el estudio de baterías Li-Ion._
+Este repositorio te permitirá obtener las instrucciones necesarias para propósitos de desarrollo y pruebas de hardware así como el uso de plataformas IoT en el estudio de baterías Li-Ion.
 
-Mira **Deployment** para conocer como desplegar el proyecto.
 
 ## Pre-requisitos 📋
 ### Hardware necesario.  
@@ -22,7 +21,7 @@ Mira **Deployment** para conocer como desplegar el proyecto.
 ### Plataformas.
 *  [Thingspeak](https://thingspeak.mathworks.com/) - Plataforma de visualización de datos IoT.
 
-  _*Para el caso de Thingspeak y matlab se necesita solo una cuenta para poder ser usadas_
+  _*Para el caso de Thingspeak y matlab se necesita solo una cuenta en mathworks para poder ser usadas_
 
 
 ## Menu de Carpetas
@@ -33,13 +32,14 @@ Aquí se encuentra el menu de carpetas que contienen los debugs, pruebas de sens
 *   [ESP32 - Max17043.](https://github.com/LINX-ICN-UNAM/IoT_platforms_for_battery_levels_by_LINX/tree/main/ESP32%20-%20Max17043)  
     Esta carpeta contiene las pruebas, así como el funcionamiento del sensor Max17043 que mide el voltaje, así como del SOC de una batería 18650.  
 *   [ESP32 - Relevadores.](https://github.com/LINX-ICN-UNAM/IoT_platforms_for_battery_levels_by_LINX/tree/main/ESP32-Relevadores)  
-    Contiene las pruebas de relevadores para conmutar Carga y descarga.  
-*   [Tester battery bank/Tester_battery_bank](https://github.com/LINX-ICN-UNAM/IoT_platforms_for_battery_levels_by_LINX/tree/main/Tester%20battery%20bank/Tester_battery_bank)  
-    Contiene las pruebas de Thingspeak para obtener lecturas en la página web.  
-*   [IoT_platforms_for_battery_levels_by_LINX](https://github.com/LINX-ICN-UNAM/IoT_platforms_for_battery_levels_by_LINX/tree/main/Tester_Battery_Bank_IoT)  
-    Se trata de una segunda versión de la plataforma Thingspeak, agregando un contador de ciclos.
-*   [Thingspeak](https://github.com/LINX-ICN-UNAM/IoT_platforms_for_battery_levels_by_LINX/tree/main/Thinkspeak)  
-    Contiene las primeras pruebas de conexión a thingspeak. Esta carpeta está descontinuada.
+    Contiene las pruebas de relevadores para conmutar Carga y descarga.
+*   [Esp32_test_LCD](https://github.com/LINX-ICN-UNAM/IoT_platforms_for_battery_levels_by_LINX/tree/main/Esp32_test_LCD)  
+    Contiene las pruebas de la pantalla LCD.
+*   [Matlab Codes](https://github.com/LINX-ICN-UNAM/IoT_platforms_for_battery_levels_by_LINX/tree/main/Matlab%20Codes)  
+    Codigos necesarios para obtener gráficas en Thingspeak o MATLAB.  
+*   [Thingspeak Dashboard](https://github.com/LINX-ICN-UNAM/IoT_platforms_for_battery_levels_by_LINX/tree/main/Tester_Battery_Bank_IoT)  
+    Códigos y sus versiones para el dashboard en Thingspeak
+
 
 <!--
 ### Pre-requisitos 📋
@@ -121,9 +121,3 @@ Este proyecto está bajo la Licencia (Tu Licencia) - mira el archivo [LICENSE.md
 
 * **Addi Trejo** - *Desarrollador de proyecto* - [additrejo](https://github.com/additrejo)
 
-<!--- También puedes mirar la lista de todos los [contribuyentes](https://github.com/your/project/contributors) quíenes han participado en este proyecto. --->
-
-
-
----
-Hecho con ❤️ por [Addi Trejo](https://github.com/Additrejo)
