@@ -3,7 +3,7 @@
 [![thigspeak-dashboard.jpg](https://i.postimg.cc/3NwT5HV1/thigspeak-dashboard.jpg)](https://postimg.cc/dkgXrgqZ)
 
 ## Descripción
-_Repositorio de documentación acerca del desarrollo de plataformas IoT para mediciones de baterías Li-Ion en el laboratorio de instrumentación espacial LINX ICN UNAM._  
+_Repositorio de documentación acerca del uso de plataformas IoT para mediciones de baterías Li-Ion en el laboratorio de instrumentación espacial LINX ICN UNAM._  
 
 Este repositorio te permitirá obtener las instrucciones necesarias para propósitos de desarrollo y pruebas de hardware así como el uso de plataformas IoT en el estudio de baterías Li-Ion.
 
@@ -34,11 +34,9 @@ Aquí se encuentra el menu de carpetas que contienen los debugs, pruebas de sens
 *   [ESP32 - Relevadores.](https://github.com/LINX-ICN-UNAM/IoT_platforms_for_battery_levels_by_LINX/tree/main/ESP32-Relevadores)  
     Contiene las pruebas de relevadores para conmutar Carga y descarga.
 *   [Esp32_test_LCD](https://github.com/LINX-ICN-UNAM/IoT_platforms_for_battery_levels_by_LINX/tree/main/Esp32_test_LCD)  
-    Contiene las pruebas de la pantalla LCD.
-*   [Matlab Codes](https://github.com/LINX-ICN-UNAM/IoT_platforms_for_battery_levels_by_LINX/tree/main/Matlab%20Codes)  
-    Codigos necesarios para obtener gráficas en Thingspeak o MATLAB.  
-*   [Thingspeak Dashboard](https://github.com/LINX-ICN-UNAM/IoT_platforms_for_battery_levels_by_LINX/tree/main/Tester_Battery_Bank_IoT)  
-    Códigos y sus versiones para el dashboard en Thingspeak
+    Contiene las pruebas de la pantalla LCD.  
+*   [Thingspeak Dashboard](https://github.com/LINX-ICN-UNAM/IoT_platforms_for_battery_levels_by_LINX/tree/main/Thingspeak%20Dashboard)  
+    Códigos de visualización y sus versiones del dashboard en Thingspeak.
 
 
 <!--
@@ -65,7 +63,7 @@ Ejecutar el código en Arduino IDE.
 _En caso de graficar datos en matlab, asegurarse de que el programa esté ejecutando de forma correcta en Arduino IDE._
 
 ```
-Agregar las credenciales correctas como el ID Channel, Read y Write API Key. que se encuentran en los settings de Thingspeak.
+NOTA IMPORTANTE: Agregar las credenciales correctas como el ID Channel, Read y Write API Key. que se encuentran en los settings de Thingspeak.
 ```
 
 <!-- 
