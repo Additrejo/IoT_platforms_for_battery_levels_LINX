@@ -1,0 +1,2 @@
+Para obtener más información sobre este proyecto, visite el repositorio en la siguiente liga:
+https://github.com/LINX-ICN-UNAM/IoT_platforms_for_battery_levels_by_LINX
