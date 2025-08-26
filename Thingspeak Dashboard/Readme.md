@@ -136,8 +136,24 @@ El **dashboard en ThingSpeak** muestra:
 Los gráficos permiten **elegir intervalos de tiempo (horas, días, semanas)** y aplicar operaciones matemáticas como promedio, máximo y mínimo.  
 
 
-### Voltaje (V)
-Muestra el voltaje en tiempo real. (!)
+ ### [Voltaje (V)](https://github.com/LINX-ICN-UNAM/IoT_platforms_for_battery_levels_by_LINX/blob/main/Thingspeak%20Dashboard/Voltaje-bater%C3%ADa%20.m).  
+Esta gráfica muestra en el dashboard el voltaje en tiempo real de la batería 18650 que se está midiendo.  
+<img width="465" height="315" alt="image" src="https://github.com/user-attachments/assets/95b37950-248a-43e4-9cdc-1330345790e4" />
+
+### [Porcentaje de la batería (%)](https://github.com/LINX-ICN-UNAM/IoT_platforms_for_battery_levels_by_LINX/blob/main/Thingspeak%20Dashboard/Voltaje-bater%C3%ADa%20.m).  
+
+### [Estado de carga (SOC)](https://github.com/LINX-ICN-UNAM/IoT_platforms_for_battery_levels_by_LINX/blob/main/Thingspeak%20Dashboard/Voltaje-bater%C3%ADa%20.m).  
+
+### [Corriente (A)](https://github.com/LINX-ICN-UNAM/IoT_platforms_for_battery_levels_by_LINX/blob/main/Thingspeak%20Dashboard/Voltaje-bater%C3%ADa%20.m).  
+
+### [Potencia (W)](https://github.com/LINX-ICN-UNAM/IoT_platforms_for_battery_levels_by_LINX/blob/main/Thingspeak%20Dashboard/Voltaje-bater%C3%ADa%20.m).  
+
+### [Capacidad acumulada (mAh)](https://github.com/LINX-ICN-UNAM/IoT_platforms_for_battery_levels_by_LINX/blob/main/Thingspeak%20Dashboard/Voltaje-bater%C3%ADa%20.m).  
+
+### [Temperatura (°C)](https://github.com/LINX-ICN-UNAM/IoT_platforms_for_battery_levels_by_LINX/blob/main/Thingspeak%20Dashboard/Voltaje-bater%C3%ADa%20.m).  
+
+### [Número de ciclos](https://github.com/LINX-ICN-UNAM/IoT_platforms_for_battery_levels_by_LINX/blob/main/Thingspeak%20Dashboard/Voltaje-bater%C3%ADa%20.m).  
+
 ---
 
 
