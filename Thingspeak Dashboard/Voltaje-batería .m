@@ -1,37 +1,59 @@
-% Código para obtener y graficar datos del voltaje de una batería 18650 en ThingSpeak
-% mostrando el tiempo en el eje X con formato dinámico
-% Autor: Addi Trejo, 08 Abril 2025
-% Ult Actu: 25 Agosto 2025
+% Dashboard en vivo con timer (MATLAB Online / ThingSpeak)
+% Hora ajustada manualmente a GMT-6 (Ciudad de México)
+% Autor: Addi Trejo
+% Ult Actu: 03-Sep-2025
 
-channelID = 2805725; % Reemplaza con tu Channel ID
-fieldID = 1; % Campo a visualizar
-readAPIKey = 'PWMRQ0HEW7NBTBBP'; % Reemplaza con tu API Key (si el canal es privado)
+channelID = 2805725;
+fieldID = 1;
+readAPIKey = 'PWMRQ0HEW7NBTBBP';
 
-% Leer datos junto con la marca de tiempo
-[data, time] = thingSpeakRead(channelID, ...
-    'Fields', fieldID, ...
-    'NumPoints', 800, ... % Ajusta el número de puntos
-    'ReadKey', readAPIKey);
+timeWindowHours = 24; % Ventana de tiempo (últimas 24h)
+updateInterval = 60;  % Intervalo de actualización en segundos
 
-% Crear un gráfico con tiempo en el eje X
 figure;
-plot(time, data, '-o');
-title('Voltaje de la batería 18650');
-xlabel('Tiempo');
+hPlot = plot(NaN, NaN, '-o');
+title(sprintf('Voltaje Batería', timeWindowHours));
+xlabel('Tiempo (CDMX GMT-6)');
 ylabel('Voltaje [V]');
 grid on;
+hold on;
 
-% ---- Ajuste automático del formato del eje X ----
-if isempty(time)
-    disp('⚠️ No se obtuvieron datos de ThingSpeak.');
-else
-    durationHours = hours(max(time) - min(time));
+% ---- Función de actualización ----
+function updatePlot(~, ~, channelID, fieldID, readAPIKey, timeWindowHours, hPlot)
+    [data, time] = thingSpeakRead(channelID, ...
+        'Fields', fieldID, ...
+        'ReadKey', readAPIKey, ...
+        'DateRange', [datetime('now','TimeZone','UTC')-hours(timeWindowHours), ...
+                      datetime('now','TimeZone','UTC')]);
 
-    if durationHours < 24
-        datetick('x', 'HH:MM', 'keepticks'); % Si es menos de 1 día -> horas:minutos
-    elseif durationHours < 7*24
-        datetick('x', 'dd-mmm HH:MM', 'keepticks'); % Si es menos de 1 semana -> día y hora
+    if ~isempty(time)
+        % Ajuste manual a GMT-6 (CDMX)
+        time = time - hours(2);
+
+        % Convertir datetime -> número para graficar
+        timeNum = datenum(time);
+
+        % Actualizar datos en la gráfica
+        set(hPlot, 'XData', timeNum, 'YData', data);
+
+        % Ajustar formato del eje X
+        durationHours = hours(max(time) - min(time));
+        if durationHours < 24
+            datetick('x', 'dd-mmm HH:MM', 'keepticks');
+        elseif durationHours < 7*24
+            datetick('x', 'dd-mmm HH:MM', 'keepticks');
+        else
+            datetick('x', 'dd-mmm', 'keepticks');
+        end
+
+        drawnow;
     else
-        datetick('x', 'dd-mmm', 'keepticks'); % Si es más de 1 semana -> solo día
+        disp('⚠️ No se obtuvieron datos de ThingSpeak.');
     end
 end
+
+% ---- Configurar timer ----
+t = timer('ExecutionMode','fixedRate','Period',updateInterval, ...
+    'TimerFcn', @(~,~)updatePlot([],[],channelID,fieldID,readAPIKey,timeWindowHours,hPlot));
+
+start(t);
