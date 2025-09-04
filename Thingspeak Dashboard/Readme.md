@@ -125,7 +125,8 @@ Agregar las credenciales correctas como el ID Channel, Read y Write API Key. que
 
 El **dashboard en ThingSpeak** muestra:  
 
-- **[Voltaje (V)](https://github.com/LINX-ICN-UNAM/IoT_platforms_for_battery_levels_by_LINX/blob/main/Thingspeak%20Dashboard/Voltaje-bater%C3%ADa%20.m)** → evolución durante la carga/descarga.  
+- **[Voltaje (V)](https://github.com/LINX-ICN-UNAM/IoT_platforms_for_battery_levels_by_LINX/blob/main/Thingspeak%20Dashboard/Voltaje-bater%C3%ADa%20.m)** → evolución durante la carga/descarga.
+- **[Porcentaje (%)](https://github.com/LINX-ICN-UNAM/IoT_platforms_for_battery_levels_by_LINX/blob/main/Thingspeak%20Dashboard/Voltaje-bater%C3%ADa%20.m)** → Porcentaje de la batería.
 - **Corriente (A)** → consumo o entrega de energía.  
 - **Potencia (W)** → cálculo en tiempo real.  
 - **Estado de carga (SoC, %)** → conversión de voltaje a porcentaje.  
@@ -135,12 +136,27 @@ El **dashboard en ThingSpeak** muestra:
 
 Los gráficos permiten **elegir intervalos de tiempo (horas, días, semanas)** y aplicar operaciones matemáticas como promedio, máximo y mínimo.  
 
+---
 
  ### [Voltaje (V)](https://github.com/LINX-ICN-UNAM/IoT_platforms_for_battery_levels_by_LINX/blob/main/Thingspeak%20Dashboard/Voltaje-bater%C3%ADa%20.m).  
-Esta gráfica muestra en el dashboard el voltaje en tiempo real de la batería 18650 que se está midiendo.  
-<img width="465" height="315" alt="image" src="https://github.com/user-attachments/assets/95b37950-248a-43e4-9cdc-1330345790e4" />
+<img width="462" height="310" alt="image" src="https://github.com/user-attachments/assets/d992c89e-7a53-4f30-bafe-d7a63c50a216" />   
 
-### [Porcentaje de la batería (%)](https://github.com/LINX-ICN-UNAM/IoT_platforms_for_battery_levels_by_LINX/blob/main/Thingspeak%20Dashboard/Voltaje-bater%C3%ADa%20.m).  
+Esta gráfica muestra en el dashboard el voltaje en tiempo real de la batería 18650.  
+En el eje X se muestra el tiempo (D,M,H).  
+En el eje Y se muestra el voltaje.  
+La gráfica se muestra de manera responsiva.  
+
+---
+
+### [Porcentaje de la batería (%)](https://github.com/LINX-ICN-UNAM/IoT_platforms_for_battery_levels_by_LINX/blob/main/Thingspeak%20Dashboard/Porcentaje-bateria.m).  
+<img width="463" height="316" alt="image" src="https://github.com/user-attachments/assets/8277b27e-54c4-41af-a903-68c4c8a73d42" />  
+   
+
+Esta gráfica muestra el porcentaje de la batería en tiempo real.
+
+---
+
+
 
 ### [Estado de carga (SOC)](https://github.com/LINX-ICN-UNAM/IoT_platforms_for_battery_levels_by_LINX/blob/main/Thingspeak%20Dashboard/Voltaje-bater%C3%ADa%20.m).  
 
