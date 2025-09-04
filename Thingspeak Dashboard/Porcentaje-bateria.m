@@ -1,38 +1,48 @@
-% Visualización en tiempo real del porcentaje de batería con área rellena
-% ThingSpeak MATLAB Visualization
-% Autor: Addi Trejo
-% Ult Actu: 03-Sep-2025
+% Porcentaje con áreas por rango (Field 2) – ThingSpeak MATLAB Visualization
 
-channelID = 2805725;
-fieldID = 1; % Campo con el voltaje
-readAPIKey = 'PWMRQ0HEW7NBTBBP';
+channelID   = 2805725;
+fieldID     = 2;                         % <-- porcentaje en Field 2
+readAPIKey  = 'PWMRQ0HEW7NBTBBP';
+numPoints   = 800;                       % ajusta si quieres más/menos historia
 
-% Leer últimas 8000 muestras
-[voltData, time] = thingSpeakRead(channelID, ...
+% Leer datos (dos salidas devuelve valores y tiempos)
+[pct, time] = thingSpeakRead(channelID, ...
     'Fields', fieldID, ...
-    'NumPoints', 8000, ...
+    'NumPoints', numPoints, ...
     'ReadKey', readAPIKey);
 
-if isempty(time)
-    disp('⚠️ No se obtuvieron datos de ThingSpeak.');
-else
-    % Ajustar zona horaria a Ciudad de México (GMT-6, sin horario de verano)
-    time.TimeZone = 'America/Mexico_City';
+% Filtrar NaN por si hay huecos
+valid = ~isnan(pct);
+pct   = pct(valid);
+time  = time(valid);
 
-    % Conversión Voltaje -> Porcentaje
-    Vmin = 3.00;
-    Vmax = 4.19;
-    percentData = (voltData - Vmin) / (Vmax - Vmin) * 100;
-    percentData(percentData > 100) = 100;
-    percentData(percentData < 0) = 0;
+% (Opcional) Etiquetar como hora CDMX sin convertir
+% time.TimeZone = 'America/Mexico_City';
 
-    % Crear gráfica de área
-    area(time, percentData, 'FaceColor', [0 0.6 0.6], 'EdgeColor', 'k');
+% Asegurar límites 0–100
+pct(pct < 0)   = 0;
+pct(pct > 100) = 100;
 
-    % Etiquetas y estilo
-    title('Porcentaje de batería 18650');
-    xlabel('Tiempo (CDMX)');
-    ylabel('Porcentaje [%]');
-    ylim([0 110]);
-    grid on;
-end
+% --- Construir capas apiladas (área) ---
+% low:  0–20   | mid: 21–79 (60 pts) | high: 80–100
+low  = min(pct, 20);               % altura de la capa roja
+mid  = max(min(pct, 80) - 20, 0);  % altura de la capa verde (encima de low)
+high = max(pct - 80, 0);           % altura de la capa amarilla (encima de mid)
+
+Y = [low(:), mid(:), high(:)];     % n x 3 para área apilada
+
+% --- Graficar ---
+h = area(time, Y);                  % área apilada
+set(h(1), 'FaceColor', [1   0.7 0.7], 'EdgeColor','none'); % rojo tenue   (0–20%)
+set(h(2), 'FaceColor', [0.7 1   0.7], 'EdgeColor','none'); % verde tenue  (21–79%)
+set(h(3), 'FaceColor', [1   1   0.6], 'EdgeColor','none'); % amarillo tenue (80–100%)
+
+hold on;
+plot(time, sum(Y,2), 'k', 'LineWidth', 1.2);               % línea negra del % real
+
+title('Porcentaje de batería 18650');
+xlabel('Tiempo (CDMX)');
+ylabel('Porcentaje [%]');
+ylim([0 110]);
+grid on;
+hold off;
