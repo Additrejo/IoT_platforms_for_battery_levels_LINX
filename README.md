@@ -34,9 +34,12 @@ Aquí se encuentra el menu de carpetas que contienen los debugs, pruebas de sens
 *   [ESP32 - Relevadores.](https://github.com/LINX-ICN-UNAM/IoT_platforms_for_battery_levels_by_LINX/tree/main/ESP32-Relevadores)  
     Contiene las pruebas de relevadores para conmutar Carga y descarga.
 *   [Esp32_test_LCD](https://github.com/LINX-ICN-UNAM/IoT_platforms_for_battery_levels_by_LINX/tree/main/Esp32_test_LCD)  
-    Contiene las pruebas de la pantalla LCD.  
+    Contiene las pruebas de la pantalla LCD.
+*   [Tester_Battery_Bank_IoT (Versiones) ](https://github.com/LINX-ICN-UNAM/IoT_platforms_for_battery_levels_by_LINX/tree/main/Tester_Battery_Bank_IoT)  
+    Códigos de programación para el hardware.   
 *   [Thingspeak Dashboard](https://github.com/LINX-ICN-UNAM/IoT_platforms_for_battery_levels_by_LINX/tree/main/Thingspeak%20Dashboard)  
-    Códigos de visualización y sus versiones del dashboard en Thingspeak.
+    Códigos de visualización y sus versiones del dashboard en Thingspeak.  
+    
 
 
 <!--
