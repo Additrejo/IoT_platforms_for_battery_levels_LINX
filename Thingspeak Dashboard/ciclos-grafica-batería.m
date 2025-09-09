@@ -2,19 +2,23 @@
 % Descripción: Grafica el número de ciclos de la batería en función del tiempo,
 % mostrando cuándo se completa cada ciclo.
 
+
 % --- Configuración del Canal y Campo ---
 channelID = 2805725;
 readAPIKey = 'PWMRQ0HEW7NBTBBP'; 
 
+
 % El campo que contiene el contador de ciclos.
 fieldID = 8; 
 
+
 % --- Lectura de Datos de ThingSpeak ---
-% Leemos una gran cantidad de puntos para ver la evolución a largo plazo.
+% Se leen los datos de los últimos 3650 días (10 años) para obtener todo el historial.
 [ciclosData, time] = thingSpeakRead(channelID, ...
                                     'ReadKey', readAPIKey, ...
                                     'Fields', fieldID, ...
-                                    'NumPoints', 8000);
+                                    'NumDays', 9000);
+
 
 % --- Creación de la Gráfica ---
 if isempty(time)
@@ -26,8 +30,9 @@ else
         ciclosData = cellfun(@str2double, ciclosData);
     end
 
-    % Se utiliza 'stairs' para crear una gráfica de escalones, ideal para un contador.
-    stairs(time, ciclosData, 'LineWidth', 2);
+
+    % Se utiliza 'stairs' con el color 'k' (negro)
+    stairs(time, ciclosData, 'k', 'LineWidth', 2);
     
     % --- Formato y Estilo de la Gráfica ---
     grid on;
