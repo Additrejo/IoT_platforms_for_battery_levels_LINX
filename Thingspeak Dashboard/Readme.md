@@ -125,13 +125,15 @@ Agregar las credenciales correctas como el ID Channel, Read y Write API Key. que
 
 El **dashboard en ThingSpeak** muestra:  
 
-- **[Voltaje (V)](https://github.com/LINX-ICN-UNAM/IoT_platforms_for_battery_levels_by_LINX/blob/main/Thingspeak%20Dashboard/Voltaje-bater%C3%ADa%20.m)** → evolución durante la carga/descarga.
-- **[Porcentaje (%)](https://github.com/LINX-ICN-UNAM/IoT_platforms_for_battery_levels_by_LINX/blob/main/Thingspeak%20Dashboard/Voltaje-bater%C3%ADa%20.m)** → Porcentaje de la batería.
+- [Voltaje (V)](#voltaje-(v)) → evolución durante la carga/descarga.
+- [Porcentaje de la batería SOC (%)](#porcentaje-de-la-batería-SOC-(%)) → Porcentaje de la batería.
+- [Temperatura (°C)](#temperatura-(°c)) → seguridad y monitoreo térmico.
+- 
+
 - **Corriente (A)** → consumo o entrega de energía.  
 - **Potencia (W)** → cálculo en tiempo real.  
 - **Estado de carga (SoC, %)** → conversión de voltaje a porcentaje.  
 - **Capacidad acumulada (mAh)** → integración de corriente en el tiempo.  
-- **Temperatura (°C)** → seguridad y monitoreo térmico.  
 - **Número de ciclos** → conteo de cargas y descargas completas.  
 
 Los gráficos permiten **elegir intervalos de tiempo (horas, días, semanas)** y aplicar operaciones matemáticas como promedio, máximo y mínimo.  
@@ -141,24 +143,51 @@ Los gráficos permiten **elegir intervalos de tiempo (horas, días, semanas)** y
  ### [Voltaje (V)](https://github.com/LINX-ICN-UNAM/IoT_platforms_for_battery_levels_by_LINX/blob/main/Thingspeak%20Dashboard/Voltaje-bater%C3%ADa%20.m).  
 <img width="462" height="310" alt="image" src="https://github.com/user-attachments/assets/d992c89e-7a53-4f30-bafe-d7a63c50a216" />   
 
-Esta gráfica muestra en el dashboard el voltaje en tiempo real de la batería 18650.  
-En el eje X se muestra el tiempo (D,M,H).  
-En el eje Y se muestra el voltaje.  
-La gráfica se muestra de manera responsiva.  
+Esta gráfica muestra el monitoreo del voltaje de una batería a lo largo de los días.  
+Se observa un patrón cíclico y repetitivo de carga y descarga.  
+Eje X muestra el tiempo (D,M,H).   
+Eje Y se muestra el voltaje.  
 
 ---
 
-### [Porcentaje de la batería (%)](https://github.com/LINX-ICN-UNAM/IoT_platforms_for_battery_levels_by_LINX/blob/main/Thingspeak%20Dashboard/Porcentaje-bateria.m).  
-<img width="463" height="316" alt="image" src="https://github.com/user-attachments/assets/8277b27e-54c4-41af-a903-68c4c8a73d42" />  
-   
+### [Porcentaje de la batería SOC (%)](https://github.com/LINX-ICN-UNAM/IoT_platforms_for_battery_levels_by_LINX/blob/main/Thingspeak%20Dashboard/Porcentaje-bateria.m).  
+<img width="463" height="316" alt="image" src="https://github.com/user-attachments/assets/8277b27e-54c4-41af-a903-68c4c8a73d42" />   
 
-Esta gráfica muestra el porcentaje de la batería en tiempo real.
+Esta visualización presenta los mismos ciclos de carga y descarga que la gráfica de voltaje, pero de una forma más fácil de interpretar para el usuario a través de un porcentaje y zonas de color.
+
+Zonas de Estado: La gráfica está dividida en tres zonas de color que indican el estado de la batería:
+
+🔴 Roja (0-20%): Nivel de carga bajo o crítico.
+
+🟢 Verde (20-80%): Rango de operación normal y óptimo para la salud de la batería.
+
+🟡 Amarilla (80-100%): Nivel de carga alto o casi lleno.
+
+**Límites de Carga:*** Es interesante notar que la batería no se carga al 100%, sino que el ciclo de carga se detiene alrededor del 97-98%. Esta es una estrategia común en los sistemas de gestión de baterías (BMS) para prolongar la vida útil de la celda, ya que mantenerla constantemente al 100% genera más estrés químico.
+
+**Profundidad de Descarga:*** La gráfica revela que la batería experimenta ciclos de descarga muy profundos diariamente, pasando por la zona verde y roja hasta agotarse casi por completo. Aunque el sistema está diseñado para funcionar así, estos ciclos tan profundos son más exigentes para la batería que si se realizaran descargas más parciales (por ejemplo, del 80% al 30%).
 
 ---
 
+### [Temperatura (°C)](https://github.com/LINX-ICN-UNAM/IoT_platforms_for_battery_levels_by_LINX/blob/main/Thingspeak%20Dashboard/Temperatura-bater%C3%ADa.m). 
+<img width="463" height="314" alt="image" src="https://github.com/user-attachments/assets/bd9c0090-2d4e-466b-bc51-ebbb9d0249d3" />   
+Esta gráfica muestra la temperatura de la batería en grados Celsius (°C) durante el mismo periodo que las gráficas anteriores. El análisis revela una clara conexión entre la temperatura y los ciclos de carga de la batería.  
 
+**Eje Y
+Etiqueta: "Temperatura (°C)"**
 
-### [Estado de carga (SOC)](https://github.com/LINX-ICN-UNAM/IoT_platforms_for_battery_levels_by_LINX/blob/main/Thingspeak%20Dashboard/Voltaje-bater%C3%ADa%20.m).  
+Este eje representa la temperatura de la batería. Las unidades están en grados Celsius (°C). En la gráfica, el rango visible va aproximadamente de 26°C a 36°C.
+
+**Eje X
+Etiqueta: "Fecha y Hora"**
+
+Este eje representa el tiempo. Muestra el avance de los días ("Sep 07", "Sep 08", "Sep 09") y las horas, permitiendo ver cómo cambia la temperatura a lo largo del día y la noche.
+
+---
+
+### [Número de ciclos](https://github.com/LINX-ICN-UNAM/IoT_platforms_for_battery_levels_by_LINX/blob/main/Thingspeak%20Dashboard/ciclos-grafica-bater%C3%ADa.m).
+<img width="1004" height="315" alt="image" src="https://github.com/user-attachments/assets/2dd0ec09-05f5-49ee-9bf9-248bd96fdee6" />  
+
 
 ### [Corriente (A)](https://github.com/LINX-ICN-UNAM/IoT_platforms_for_battery_levels_by_LINX/blob/main/Thingspeak%20Dashboard/Voltaje-bater%C3%ADa%20.m).  
 
@@ -166,9 +195,9 @@ Esta gráfica muestra el porcentaje de la batería en tiempo real.
 
 ### [Capacidad acumulada (mAh)](https://github.com/LINX-ICN-UNAM/IoT_platforms_for_battery_levels_by_LINX/blob/main/Thingspeak%20Dashboard/Voltaje-bater%C3%ADa%20.m).  
 
-### [Temperatura (°C)](https://github.com/LINX-ICN-UNAM/IoT_platforms_for_battery_levels_by_LINX/blob/main/Thingspeak%20Dashboard/Voltaje-bater%C3%ADa%20.m).  
+ 
 
-### [Número de ciclos](https://github.com/LINX-ICN-UNAM/IoT_platforms_for_battery_levels_by_LINX/blob/main/Thingspeak%20Dashboard/Voltaje-bater%C3%ADa%20.m).  
+  
 
 ---
 
