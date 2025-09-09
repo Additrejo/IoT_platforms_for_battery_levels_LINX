@@ -7,15 +7,15 @@ Junio 13 2025
 */
 
 // Inclusión de bibliotecas necesarias
-#include <Wire.h>                          // Comunicación I2C
-#include <LiquidCrystal_PCF8574.h>         // Control del LCD vía I2C
-#include <WiFi.h>                          // Librería para conexión WiFi
-#include <HTTPClient.h>                    // Librería para enviar datos HTTP
-#include "max6675.h"                       // Librería para sensor de temperatura MAX6675 (termopar tipo K)
-#include <Adafruit_INA219.h>               // Librería para sensores de corriente INA219
+#include <Wire.h>                  // Comunicación I2C
+#include <LiquidCrystal_PCF8574.h> // Control del LCD vía I2C
+#include <WiFi.h>                  // Librería para conexión WiFi
+#include <HTTPClient.h>            // Librería para enviar datos HTTP
+#include "max6675.h"               // Librería para sensor de temperatura MAX6675 (termopar tipo K)
+#include <Adafruit_INA219.h>       // Librería para sensores de corriente INA219
 
 // Configuración LCD
-LiquidCrystal_PCF8574 lcd(0x27);           // LCD I2C en la dirección 0x27
+LiquidCrystal_PCF8574 lcd(0x27); // LCD I2C en la dirección 0x27
 
 // Configuración WiFi
 const char* ssid = "SterenC";
@@ -49,7 +49,7 @@ unsigned long tiempoAnterior = 0;
 
 // Intervalos
 const unsigned long intervaloWiFi = 600000;   // 10 min
-const unsigned long intervaloEnvio = 15000;   // 15 s
+const unsigned long intervaloEnvio = 15000; // 15 s
 
 // Contador de ciclos
 int cicloContador = 0;
@@ -58,8 +58,9 @@ int cicloContador = 0;
 Adafruit_INA219 ina219_carga(0x41);
 Adafruit_INA219 ina219_descarga(0x40);
 
-// Acumulador Ah
-float ampereHora = 0.0;
+// Acumuladores Ah separados para carga y descarga
+float ampereHoraCarga = 0.0;
+float ampereHoraDescarga = 0.0;
 
 // Variables para modo forzado
 bool forzarCarga = false;
@@ -117,10 +118,14 @@ void loop() {
     float corriente_descarga = bateriaConectada ? ina219_descarga.getCurrent_mA() / 1000.0 : 0.0;
     float potencia = voltage * (corriente_carga + corriente_descarga);
 
-    // Cálculo de Ah
+    // Cálculo de Ah separado para carga y descarga
     unsigned long tiempoActual = millis();
     float tiempoHoras = (tiempoActual - tiempoAnterior) / 3600000.0;
-    ampereHora += (corriente_carga + corriente_descarga) * tiempoHoras;
+    if (enCarga) {
+        ampereHoraCarga += corriente_carga * tiempoHoras;
+    } else {
+        ampereHoraDescarga += corriente_descarga * tiempoHoras;
+    }
     tiempoAnterior = tiempoActual;
 
     String estadoBateria = bateriaConectada ? (enCarga ? "Cargando" : "Descarga") : "No Battery";
@@ -131,12 +136,12 @@ void loop() {
             digitalWrite(releCarga, HIGH);
             digitalWrite(releDescarga, LOW);
             enCarga = true;
-            estadoBateria = "Carga";
+            estadoBateria = "Cargando"; 
         } else if (forzarDescarga) {
             digitalWrite(releCarga, LOW);
             digitalWrite(releDescarga, HIGH);
             enCarga = false;
-            estadoBateria = "Descarga";
+            estadoBateria = "Descarga"; 
         } else {
             // Lógica automática
             if (enCarga) {
@@ -152,7 +157,7 @@ void loop() {
                     digitalWrite(releDescarga, LOW);
                     estadoBateria = "Cargando";
                 }
-            } else {
+            } else { // No está en carga (en descarga)
                 if (voltage <= 3.0) {
                     digitalWrite(releDescarga, LOW);
                     digitalWrite(releCarga, HIGH);
@@ -160,9 +165,11 @@ void loop() {
                     voltajeMaximo = voltage;
                     estadoBateria = "Cargando";
 
+                    // Reinicio de contadores al iniciar un nuevo ciclo de carga
                     if (!previoEnCarga) {
                         cicloContador++;
-                        ampereHora = 0.0;
+                        ampereHoraCarga = 0.0;
+                        ampereHoraDescarga = 0.0;
                     }
                 } else {
                     digitalWrite(releCarga, LOW);
@@ -179,11 +186,11 @@ void loop() {
     }
 
     // Mostrar en LCD
-    mostrarDatosLCD(voltage, percentage, temperatura, corriente_carga, corriente_descarga, potencia, ampereHora, estadoBateria, cicloContador);
+    mostrarDatosLCD(voltage, percentage, temperatura, corriente_carga, corriente_descarga, potencia, ampereHoraCarga, ampereHoraDescarga, estadoBateria, cicloContador);
 
     // Enviar a ThingSpeak
     if (millis() - tiempoUltimoEnvio >= intervaloEnvio) {
-        sendToThingSpeak(voltage, percentage, temperatura, corriente_carga, corriente_descarga, potencia, ampereHora, cicloContador);
+        sendToThingSpeak(voltage, percentage, temperatura, corriente_carga, corriente_descarga, potencia, ampereHoraCarga, ampereHoraDescarga, cicloContador);
         tiempoUltimoEnvio = millis();
     }
 
@@ -239,48 +246,56 @@ int calculatePercentage(float voltage) {
     return (int)((voltage - 3.0) / (4.20 - 3.0) * 100.0);
 }
 
+
 // Mostrar LCD
-// Mostrar LCD con tiempo delante del porcentaje
-void mostrarDatosLCD(float voltage, int percentage, float temperatura, float corriente_carga, float corriente_descarga, float potencia, float ampereHora, String estado, int ciclos) {
+void mostrarDatosLCD(float voltage, int percentage, float temperatura, float corriente_carga, float corriente_descarga, float potencia, float ahC, float ahD, String estado, int ciclos) {
     lcd.clear();
 
-    // Calcula horas y minutos desde inicio
     unsigned long tiempoSegundos = millis() / 1000;
     int horas = tiempoSegundos / 3600;
     int minutos = (tiempoSegundos % 3600) / 60;
 
     char tiempoStr[6];
-    sprintf(tiempoStr, "%02d:%02d", horas, minutos); // Formato HH:MM
+    sprintf(tiempoStr, "%02d:%02d", horas, minutos);
 
     if (voltage > 4.7) {
-        lcd.setCursor(0, 0); lcd.print("V:0.0     T:00:00 B:0%");
-        lcd.setCursor(0, 1); lcd.print("I:0.0     P:0.0");
-        lcd.setCursor(0, 2); lcd.print("Ah:0.0    T:0.0");
+        lcd.setCursor(0, 0); lcd.print("V:0.0   T:00:00 B:0%");
+        lcd.setCursor(0, 1); lcd.print("I:0.0   P:0.0");
+        lcd.setCursor(0, 2); lcd.print("Ah:0.0  T:0.0");
         lcd.setCursor(0, 3); lcd.print("No Battery");
     } else {
         lcd.setCursor(0, 0);
         lcd.printf("V:%.2f T:%s B:%d%%", voltage, tiempoStr, percentage);
         lcd.setCursor(0, 1);
         lcd.printf("I:%.3f  P:%.2f", corriente_carga + corriente_descarga, potencia);
+        
         lcd.setCursor(0, 2);
-        lcd.printf("Ah:%.3f T:%.1f", ampereHora, temperatura);
+        if (estado == "Cargando") {
+            lcd.printf("AhC:%.3f T:%.1f", ahC, temperatura);
+        } else { 
+            lcd.printf("AhD:%.3f T:%.1f", ahD, temperatura);
+        }
+        
         lcd.setCursor(0, 3);
         lcd.printf("Ciclos:%d %s", ciclos, estado.c_str());
     }
 }
 
+
 // ThingSpeak
-void sendToThingSpeak(float voltage, int percentage, float temperatura, float ic, float id, float potencia, float ah, int ciclos) {
+void sendToThingSpeak(float voltage, int percentage, float temperatura, float ic, float id, float potencia, float ahC, float ahD, int ciclos) {
     if (WiFi.status() == WL_CONNECTED) {
         HTTPClient http;
         String url = String(server) + "/update?api_key=" + apiKey;
         url += "&field1=" + String(voltage, 2);
-        url += "&field2=" + String(percentage); // Entero
+        url += "&field2=" + String(percentage);
         url += "&field3=" + String(temperatura, 1);
-        url += "&field4=" + String(ic, 3);
-        url += "&field5=" + String(id, 3);
+        // MODIFICACIÓN: Se envía la capacidad de carga (AhC) al campo 4
+        url += "&field4=" + String(ahC, 4); 
+        url += "&field5=" + String(ahD, 4); // Se mantiene el envío de AhD al campo 5
         url += "&field6=" + String(potencia, 2);
-        url += "&field7=" + String(ah, 4);
+        // MODIFICACIÓN: Se envía la corriente de carga instantánea (ic) al campo 7
+        url += "&field7=" + String(ic, 3); 
         url += "&field8=" + String(ciclos);
         http.begin(url);
         int httpCode = http.GET();
