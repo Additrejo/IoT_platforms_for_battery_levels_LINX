@@ -141,9 +141,8 @@ Los gráficos permiten **elegir intervalos de tiempo (horas, días, semanas)** y
 ---
 
  ### [Voltaje (V)](https://github.com/LINX-ICN-UNAM/IoT_platforms_for_battery_levels_by_LINX/blob/main/Thingspeak%20Dashboard/Voltaje-bater%C3%ADa%20.m).  
-<img width="997" height="316" alt="image" src="https://github.com/user-attachments/assets/edf03c3b-9648-40cb-82f8-a5e778a549b9" />  
- 
-
+<img width="999" height="314" alt="image" src="https://github.com/user-attachments/assets/ca12c1d3-d0e8-4786-bf29-3a63f309b0df" />  
+  
 Esta gráfica muestra el monitoreo del voltaje de una batería a lo largo de los días.  
 Se observa un patrón cíclico y repetitivo de carga y descarga.  
 Eje X muestra el tiempo (D,M,H).   
@@ -172,8 +171,8 @@ Zonas de Estado: La gráfica está dividida en tres zonas de color que indican e
 ---
 
 ### [Temperatura (°C)](https://github.com/LINX-ICN-UNAM/IoT_platforms_for_battery_levels_by_LINX/blob/main/Thingspeak%20Dashboard/Temperatura-bater%C3%ADa.m). 
-<img width="999" height="309" alt="image" src="https://github.com/user-attachments/assets/112c239f-ca92-4c0e-bfa7-06d9b248ac96" />  
-
+<img width="998" height="309" alt="image" src="https://github.com/user-attachments/assets/4c64e141-e2b9-45b7-96d8-646719cc7b38" />  
+  
 Esta gráfica muestra la temperatura de la batería en grados Celsius (°C) durante el mismo periodo que las gráficas anteriores. El análisis revela una clara conexión entre la temperatura y los ciclos de carga de la batería.  
 
 **Eje Y
@@ -184,12 +183,14 @@ Este eje representa la temperatura de la batería. Las unidades están en grados
 **Eje X
 Etiqueta: "Fecha y Hora"**
 
-Este eje representa el tiempo. Muestra el avance de los días ("Sep 07", "Sep 08", "Sep 09") y las horas, permitiendo ver cómo cambia la temperatura a lo largo del día y la noche.
+Este eje representa el tiempo. Muestra el avance de los días y las horas, permitiendo ver cómo cambia la temperatura a lo largo del tiempo.
+
+Se agregarón etiquetas para identificar los valores pico de las lecturas.
 
 ---
 
 ### [Número de ciclos](https://github.com/LINX-ICN-UNAM/IoT_platforms_for_battery_levels_by_LINX/blob/main/Thingspeak%20Dashboard/ciclos-grafica-bater%C3%ADa.m).
-<img width="1000" height="313" alt="image" src="https://github.com/user-attachments/assets/408870eb-f84f-4a28-9e2e-595ab8bcb0e1" />  
+<img width="1000" height="312" alt="image" src="https://github.com/user-attachments/assets/12bced62-ea7c-4726-a9ac-f21bec07e8cf" />  
 
 Su objetivo es mostrar cómo una variable (el número de ciclos) se ha acumulado y ha cambiado a lo largo del tiempo. No solo muestra el valor final, sino también cuándo ocurrió cada incremento.  
 
@@ -204,7 +205,7 @@ Los saltos verticales representan el momento exacto en que se completó un nuevo
 ---
 
 ### [Corriente de carga acumulada (A)](https://github.com/LINX-ICN-UNAM/IoT_platforms_for_battery_levels_by_LINX/blob/main/Thingspeak%20Dashboard/Voltaje-bater%C3%ADa%20.m).  
-<img width="1000" height="314" alt="image" src="https://github.com/user-attachments/assets/8ca7da7e-c1ce-426f-86c9-3a87d556832a" />  
+<img width="999" height="310" alt="image" src="https://github.com/user-attachments/assets/a060b206-79f4-4719-b5e5-a48969d0598e" />  
 
 Es una gráfica de área y de línea a lo largo del tiempo, diseñada para mostrar el comportamiento de la corriente durante ciclos repetitivos.
 
