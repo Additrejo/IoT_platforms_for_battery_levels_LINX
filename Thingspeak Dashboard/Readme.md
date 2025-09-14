@@ -141,7 +141,8 @@ Los gráficos permiten **elegir intervalos de tiempo (horas, días, semanas)** y
 ---
 
  ### [Voltaje (V)](https://github.com/LINX-ICN-UNAM/IoT_platforms_for_battery_levels_by_LINX/blob/main/Thingspeak%20Dashboard/Voltaje-bater%C3%ADa%20.m).  
-<img width="462" height="310" alt="image" src="https://github.com/user-attachments/assets/d992c89e-7a53-4f30-bafe-d7a63c50a216" />   
+<img width="997" height="316" alt="image" src="https://github.com/user-attachments/assets/edf03c3b-9648-40cb-82f8-a5e778a549b9" />  
+ 
 
 Esta gráfica muestra el monitoreo del voltaje de una batería a lo largo de los días.  
 Se observa un patrón cíclico y repetitivo de carga y descarga.  
@@ -151,7 +152,8 @@ Eje Y se muestra el voltaje.
 ---
 
 ### [Porcentaje de la batería SOC (%)](https://github.com/LINX-ICN-UNAM/IoT_platforms_for_battery_levels_by_LINX/blob/main/Thingspeak%20Dashboard/Porcentaje-bateria.m).  
-<img width="463" height="316" alt="image" src="https://github.com/user-attachments/assets/8277b27e-54c4-41af-a903-68c4c8a73d42" />   
+<img width="999" height="313" alt="image" src="https://github.com/user-attachments/assets/428679fb-fd6f-43bd-afb8-7e1516df3629" />  
+   
 
 Esta visualización presenta los mismos ciclos de carga y descarga que la gráfica de voltaje, pero de una forma más fácil de interpretar para el usuario a través de un porcentaje y zonas de color.
 
@@ -170,7 +172,8 @@ Zonas de Estado: La gráfica está dividida en tres zonas de color que indican e
 ---
 
 ### [Temperatura (°C)](https://github.com/LINX-ICN-UNAM/IoT_platforms_for_battery_levels_by_LINX/blob/main/Thingspeak%20Dashboard/Temperatura-bater%C3%ADa.m). 
-<img width="463" height="314" alt="image" src="https://github.com/user-attachments/assets/bd9c0090-2d4e-466b-bc51-ebbb9d0249d3" />   
+<img width="999" height="309" alt="image" src="https://github.com/user-attachments/assets/112c239f-ca92-4c0e-bfa7-06d9b248ac96" />  
+
 Esta gráfica muestra la temperatura de la batería en grados Celsius (°C) durante el mismo periodo que las gráficas anteriores. El análisis revela una clara conexión entre la temperatura y los ciclos de carga de la batería.  
 
 **Eje Y
@@ -186,10 +189,38 @@ Este eje representa el tiempo. Muestra el avance de los días ("Sep 07", "Sep 08
 ---
 
 ### [Número de ciclos](https://github.com/LINX-ICN-UNAM/IoT_platforms_for_battery_levels_by_LINX/blob/main/Thingspeak%20Dashboard/ciclos-grafica-bater%C3%ADa.m).
-<img width="1004" height="315" alt="image" src="https://github.com/user-attachments/assets/2dd0ec09-05f5-49ee-9bf9-248bd96fdee6" />  
+<img width="1000" height="313" alt="image" src="https://github.com/user-attachments/assets/408870eb-f84f-4a28-9e2e-595ab8bcb0e1" />  
 
+Su objetivo es mostrar cómo una variable (el número de ciclos) se ha acumulado y ha cambiado a lo largo del tiempo. No solo muestra el valor final, sino también cuándo ocurrió cada incremento.  
 
-### [Corriente (A)](https://github.com/LINX-ICN-UNAM/IoT_platforms_for_battery_levels_by_LINX/blob/main/Thingspeak%20Dashboard/Voltaje-bater%C3%ADa%20.m).  
+Eje Vertical (Y): Representa la cantidad total de ciclos completados.  
+
+Eje Horizontal (X): Representa el tiempo, mostrando la fecha y la hora.  
+
+La gráfica tiene una forma distintiva de "escalera" o "escalones". Este patrón es típico de un contador acumulativo:  
+Las líneas horizontales indican períodos de tiempo en los que el número de ciclos se mantuvo constante.  
+Los saltos verticales representan el momento exacto en que se completó un nuevo ciclo y el contador aumentó su valor.  
+
+---
+
+### [Corriente de carga acumulada (A)](https://github.com/LINX-ICN-UNAM/IoT_platforms_for_battery_levels_by_LINX/blob/main/Thingspeak%20Dashboard/Voltaje-bater%C3%ADa%20.m).  
+<img width="1000" height="314" alt="image" src="https://github.com/user-attachments/assets/8ca7da7e-c1ce-426f-86c9-3a87d556832a" />  
+
+Es una gráfica de área y de línea a lo largo del tiempo, diseñada para mostrar el comportamiento de la corriente durante ciclos repetitivos.
+
+Eje Vertical (Y): Representa el valor de la Corriente en miliamperios (mA). Un punto más alto en la gráfica indica un mayor flujo de corriente hacia la batería.
+
+Eje Horizontal (X): Representa el Tiempo, mostrando la fecha y la hora en que se registraron los datos.
+
+La corriente se mantiene alta y luego comienza a descender de forma curva. Este comportamiento es típico en los algoritmos de carga de baterías (fase de corriente constante seguida de voltaje constante).
+
+Fin (Caída Vertical): El ciclo termina cuando la corriente cae abruptamente a cero, indicando que la carga se ha detenido.
+
+Líneas Rojas y Anotaciones: Las líneas punteadas rojas en la cima de cada ciclo marcan y muestran el valor máximo de corriente alcanzado en ese ciclo en particular. Esto es muy útil para comparar la consistencia del proceso de carga entre un ciclo y otro.
+
+Área Rellena (Verde): El sombreado debajo de la línea ayuda a visualizar cada ciclo como una unidad distinta y resalta la "cantidad" de corriente suministrada a lo largo del tiempo.
+
+---
 
 ### [Potencia (W)](https://github.com/LINX-ICN-UNAM/IoT_platforms_for_battery_levels_by_LINX/blob/main/Thingspeak%20Dashboard/Voltaje-bater%C3%ADa%20.m).  
 
