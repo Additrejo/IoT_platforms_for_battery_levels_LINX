@@ -1,0 +1,1 @@
+# IoT_platforms_for_battery_levels_LINX
