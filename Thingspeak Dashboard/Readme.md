@@ -204,7 +204,7 @@ Los saltos verticales representan el momento exacto en que se completó un nuevo
 
 ---
 
-### [Corriente de carga acumulada (A)](https://github.com/LINX-ICN-UNAM/IoT_platforms_for_battery_levels_by_LINX/blob/main/Thingspeak%20Dashboard/Voltaje-bater%C3%ADa%20.m).  
+### [Corriente de carga acumulada (mAh)](https://github.com/LINX-ICN-UNAM/IoT_platforms_for_battery_levels_by_LINX/blob/main/Thingspeak%20Dashboard/Voltaje-bater%C3%ADa%20.m).  
 <img width="999" height="310" alt="image" src="https://github.com/user-attachments/assets/a060b206-79f4-4719-b5e5-a48969d0598e" />  
 
 Es una gráfica de área y de línea a lo largo del tiempo, diseñada para mostrar el comportamiento de la corriente durante ciclos repetitivos.
@@ -223,13 +223,41 @@ Líneas Rojas y Anotaciones: Las líneas punteadas rojas en la cima de cada cicl
 
 ---
 
-### [Potencia (W)](https://github.com/LINX-ICN-UNAM/IoT_platforms_for_battery_levels_by_LINX/blob/main/Thingspeak%20Dashboard/Voltaje-bater%C3%ADa%20.m).  
+### [Corriente de descarga acumulada (mAh)](https://github.com/LINX-ICN-UNAM/IoT_platforms_for_battery_levels_by_LINX/blob/main/Thingspeak%20Dashboard/mAh-descarga-bateria.m).  
+<img width="1000" height="319" alt="image" src="https://github.com/user-attachments/assets/d30c1147-3b2c-42c2-861b-ebce91a1091c" />
 
-### [Capacidad acumulada (mAh)](https://github.com/LINX-ICN-UNAM/IoT_platforms_for_battery_levels_by_LINX/blob/main/Thingspeak%20Dashboard/Voltaje-bater%C3%ADa%20.m).  
+Este script de MATLAB se conecta a tu canal de ThingSpeak para crear una gráfica detallada de la potencia de descarga de tu batería.
 
- 
+En esencia, hace lo siguiente:
 
-  
+Lee los Datos: Obtiene los valores de Potencia y el conteo de Ciclos.
+
+Dibuja la Gráfica Principal: Muestra la potencia a lo largo del tiempo como una gráfica de área de color verde.
+
+Analiza Cada Ciclo: Automáticamente identifica dónde empieza y termina cada ciclo de descarga.
+
+Añade Información Clave: Para cada ciclo individual, calcula y añade dos etiquetas directamente sobre la gráfica:
+
+El pico de mAh entrgrados: Marca el punto más alto y escribe el valor exacto de mAh entregados en la descarga.
+
+La duración del ciclo: Calcula cuánto tiempo duró esa descarga y lo muestra en formato hh:mm:ss.
+
+---
+
+### [Ciclos de corriente de carga y descarga acumulada (mAh)](https://github.com/LINX-ICN-UNAM/IoT_platforms_for_battery_levels_by_LINX/blob/main/Thingspeak%20Dashboard/ciclos-de-mAh-bateria.m).  
+<img width="1001" height="317" alt="image" src="https://github.com/user-attachments/assets/4bb1653e-66a3-4767-b18a-524d05024957" />
+
+Este script de MATLAB se conecta a tu canal de ThingSpeak para crear una única gráfica que superpone la corriente de carga (en verde) y la corriente de descarga (en rojo).
+
+Su principal función de análisis se centra en los ciclos de carga. Para cada período en el que la batería se está cargando, el código automáticamente:
+
+Calcula la duración total de ese ciclo de carga.
+
+Dibuja una línea horizontal en la parte inferior de la gráfica para marcar visualmente el inicio y el fin del ciclo.
+
+Escribe el tiempo de duración (formateado como "Xh Ym") junto a esa línea.
+
+En resumen, el código visualiza el comportamiento completo de carga y descarga, pero analiza y anota específicamente cuánto tiempo duró cada fase de carga.
 
 ---
 
