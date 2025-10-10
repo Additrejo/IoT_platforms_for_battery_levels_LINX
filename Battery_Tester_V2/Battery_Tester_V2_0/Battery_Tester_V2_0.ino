@@ -4,7 +4,7 @@
  * para iniciar los respectivos procesos. Al finalizar un proceso, vuelve al estado NEUTRAL.
  *
  * Desarrollado por Addi Trejo para el laboratorio de instrumentación espacial Linx
- * Modificado por Gemini.
+
  * Octubre 09 2025
 */
 
