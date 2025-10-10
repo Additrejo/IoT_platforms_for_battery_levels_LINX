@@ -3,7 +3,7 @@
  * El sistema ahora inicia en un estado NEUTRAL y espera los comandos "carga" o "descarga"
  * para iniciar los respectivos procesos. Al finalizar un proceso, vuelve al estado NEUTRAL.
  *
- * Desarrollado por Addi Trejo para el laboratorio de instrumentación espacial Linx
+ * Desarrollado por Addi Trejo para el laboratorio de instrumentación espacial Linx..
 
  * Octubre 09 2025
 */
