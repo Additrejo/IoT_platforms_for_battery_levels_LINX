@@ -97,13 +97,20 @@ Para ver la gráfica en MATLAB de este circuito consulte la carpeta **[Matlab co
 ![image](https://github.com/user-attachments/assets/08c86828-4559-44b0-96b9-866fff83cc64)  
 
 
-## **_Versión 1.5_**
-* [Versión 1.5](https://github.com/LINX-ICN-UNAM/IoT_platforms_for_battery_levels_by_LINX/blob/main/Tester_Battery_Bank_IoT/Tester_Battery_Bank_IoT_V1.5.ino)
+## **_Versión 1.1_**
+* [Versión 1.1](https://github.com/LINX-ICN-UNAM/IoT_platforms_for_battery_levels_by_LINX/blob/main/Tester_Battery_Bank_IoT/Tester_Battery_Bank_IoT_V1.5.ino)
 
 ![image](https://github.com/user-attachments/assets/5fa98963-a349-4f9b-b87f-95d35bf98dbe)
 
-
 Al agregar un segundo sensor de corriente, ahora podemos obtener la corriente de descarga (entre la resistencia y la batería 18650) y la corriente de carga (entre el BMS y la batería) 
+
+## **_Versión 1.2_**
+* [Versión 1.2](https://github.com/LINX-ICN-UNAM/IoT_platforms_for_battery_levels_by_LINX/blob/main/Tester_Battery_Bank_IoT/Tester_Battery_Bank_IoT_V1.5.ino)
+
+<img width="1084" height="652" alt="image" src="https://github.com/user-attachments/assets/1f9e72db-6adf-46f3-9cde-c953ca1b47cf" />
+
+
+---
 
 ### Gráfica en Matlab
 Para ver la gráfica en MATLAB de este circuito consulte la carpeta **[Matlab codes](https://github.com/LINX-ICN-UNAM/IoT_platforms_for_battery_levels_by_LINX/tree/main/Matlab%20Codes)** 
