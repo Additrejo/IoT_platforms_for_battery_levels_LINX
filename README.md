@@ -1,4 +1,4 @@
-# Desarrollo y uso de plataformas IoT para el análisis de baterías Li-Ion.
+# Desarrollo y uso de plataformas IoT para el análisis de baterías Li-Ion..
 
 [![thigspeak-dashboard.jpg](https://i.postimg.cc/3NwT5HV1/thigspeak-dashboard.jpg)](https://postimg.cc/dkgXrgqZ)
 
